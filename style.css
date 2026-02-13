@@ -1,0 +1,221 @@
+:root{
+  --bg1:#ff9ecf;
+  --bg2:#ffe0ef;
+  --ink:#2a2a2a;
+  --muted:#6a6a6a;
+  --accent:#ff2f86;
+  --shadow: 0 22px 60px rgba(0,0,0,.18);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  background: radial-gradient(circle at top, var(--bg2), var(--bg1));
+  overflow:hidden;
+  color:var(--ink);
+}
+
+/* Floating hearts bg */
+.bg-hearts{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+}
+.bg-hearts span{
+  position:absolute;
+  bottom:-30px;
+  font-size:20px;
+  opacity:.75;
+  animation: floatUp linear forwards;
+  filter: drop-shadow(0 10px 25px rgba(0,0,0,.15));
+}
+@keyframes floatUp{
+  from{transform: translateY(0) scale(1); opacity:1}
+  to{transform: translateY(-120vh) scale(1.6); opacity:0}
+}
+
+/* Layout */
+.wrap{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  gap:14px;
+  position:relative;
+  z-index:1;
+}
+.top{
+  text-align:center;
+  max-width: 760px;
+}
+.pill{
+  display:inline-block;
+  padding:10px 14px;
+  border-radius:999px;
+  background: rgba(255,255,255,.55);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,.10);
+  font-weight:900;
+}
+h1{
+  margin:10px 0 6px;
+  font-size: clamp(22px, 4.8vw, 38px);
+  letter-spacing:-.02em;
+}
+p{
+  margin:0;
+  color:var(--muted);
+  font-weight:700;
+}
+.accent{color:var(--accent)}
+
+/* Card stage */
+.card-stage{
+  width:min(520px, 92vw);
+  display:grid;
+  place-items:center;
+}
+
+/* 3D Card */
+.card{
+  width:min(420px, 92vw);
+  height: 520px;
+  position:relative;
+  transform-style:preserve-3d;
+  transition: transform 900ms cubic-bezier(.2,.9,.2,1);
+  cursor:pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-height: 740px){
+  .card{ height: 480px; }
+}
+@media (max-height: 660px){
+  .card{ height: 440px; }
+}
+
+.face{
+  position:absolute;
+  inset:0;
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  backface-visibility:hidden;
+  overflow:hidden;
+}
+
+/* Front design */
+.front{
+  background: linear-gradient(135deg, #ffffff, #fff0f7);
+  display:grid;
+  place-items:center;
+  padding:20px;
+}
+.front-chip{
+  position:absolute;
+  top:16px;
+  left:16px;
+  padding:9px 12px;
+  border-radius:999px;
+  background: rgba(255,47,134,.10);
+  border: 1px solid rgba(255,47,134,.18);
+  font-weight:900;
+}
+.big-heart{
+  font-size: 80px;
+  animation: beat 1.2s infinite;
+  filter: drop-shadow(0 14px 30px rgba(255,47,134,.25));
+}
+@keyframes beat{
+  0%,100%{transform: scale(1)}
+  50%{transform: scale(1.12)}
+}
+.front-text{
+  position:absolute;
+  bottom:18px;
+  font-weight:1000;
+  color: rgba(0,0,0,.55);
+}
+.shine{
+  position:absolute;
+  inset:-40%;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,47,134,.18), transparent 70%);
+  transform: rotate(12deg) translateX(-30%);
+  animation: shineMove 2.6s infinite;
+}
+@keyframes shineMove{
+  0%{transform: rotate(12deg) translateX(-45%)}
+  100%{transform: rotate(12deg) translateX(45%)}
+}
+
+/* Back */
+.back{
+  background: rgba(255,255,255,.88);
+  backdrop-filter: blur(10px);
+  transform: rotateY(180deg);
+  padding:18px 18px 16px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* Top row on back */
+.back-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+.to{
+  padding:8px 12px;
+  border-radius:999px;
+  background: rgba(255,47,134,.09);
+  border: 1px solid rgba(255,47,134,.18);
+  font-weight:900;
+}
+.mini{
+  border:none;
+  padding:8px 12px;
+  border-radius:999px;
+  background: rgba(0,0,0,.08);
+  font-weight:900;
+  cursor:pointer;
+}
+
+/* Text */
+.back h2{ margin:6px 0 0; }
+.typed{
+  margin:0;
+  color:#333;
+  line-height:1.65;
+  font-size: 16px;
+  white-space: pre-wrap;
+  flex: 1;
+  overflow:auto;
+  -webkit-overflow-scrolling: touch;
+  padding-right:4px;
+}
+
+.closing{
+  text-align:center;
+  padding-top:6px;
+}
+.muted{ color:var(--muted); font-weight:800 }
+.sig{ font-weight:1000; font-size:18px }
+
+/* FLIPPED state */
+.card.flipped{
+  transform: rotateY(180deg);
+}
+
+/* Confetti canvas */
+#confetti{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:2;
+}

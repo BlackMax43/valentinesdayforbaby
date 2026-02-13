@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Valentine’s 💘</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="bg-hearts" id="bgHearts" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <header class="top">
+      <div class="pill">💗 Valentine Gift</div>
+      <h1>Happy Valentine’s Day, <span class="accent">Baby</span> 💘</h1>
+      <p>Tap the card to open heheehe</p>
+    </header>
+
+    <section class="card-stage">
+      <div class="card" id="card" role="button" tabindex="0" aria-label="Open valentine card">
+        <!-- FRONT -->
+        <div class="face front">
+          <div class="front-chip">For my Valentine 🥰</div>
+          <div class="big-heart">💗</div>
+          <div class="front-text">Tap to open</div>
+          <div class="shine" aria-hidden="true"></div>
+        </div>
+
+        <!-- BACK -->
+        <div class="face back">
+          <div class="back-top">
+            <div class="to">To: <b>My love</b> 💞</div>
+            <button class="mini" id="replayBtn" type="button">↻ Replay</button>
+          </div>
+
+          <h2>My love,</h2>
+          <p class="typed" id="typed"></p>
+
+          <div class="closing">
+            <div class="muted">Always yours,</div>
+            <div class="sig">— Your <span class="accent">Hubby</span> 💗</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <canvas id="confetti" aria-hidden="true"></canvas>
+  <script src="script.js"></script>
+</body>
+</html>
